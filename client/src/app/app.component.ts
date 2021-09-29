@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { IPagination } from './models/pagination';
-import { IProduct } from './models/product';
+import { IPagination } from './shared/models/pagination';
+import { IProduct } from './shared/models/product';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +10,10 @@ import { IProduct } from './models/product';
 })
 export class AppComponent implements OnInit {
   title: string = 'Skinet';
-  products: IProduct[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   ngOnInit(): void {
-    //TODO: replace any with IPagination interface
-    //When replacing any with IPagination interface there an error with a message of "No overload matches this call."
-    this.http.get('https://localhost:5001/api/products').subscribe((respose: any) => {
-      this.products = respose.data;
-    }, error =>{
-      console.log(error);
-    });
+    
   }
 }
